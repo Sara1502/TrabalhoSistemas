@@ -1,0 +1,58 @@
+import os
+os.system('cmd /c "ipconfig"')
+
+version = "1.0.0"
+
+ip = "1"
+ipavancado = "2"
+exibircache = "3"
+limparcache = "4"
+versionTool = "--version"
+helpTool = "--help"
+
+def _tools(tool):
+  if tool == versionTool:
+    print ("Versão: " + version)
+  if tool == helpTool:
+    print ("Para entender como utilizar esse programa abra o arquivo ReadMe.")
+
+def ip():
+    os.system('cmd /c "ipconfig"')
+    pressAnyButton = (input("Clinque enter para continuar"))
+    start()
+
+def ipAvancado():
+    os.system('cmd /c "ipconfig /all"')
+    pressAnyButton = (input("Clinque enter para continuar"))
+    start()
+
+def exibirCache():
+    os.system('cmd /c "ipconfig /displaydns"')
+    pressAnyButton = (input("Clinque enter para continuar"))
+    start()
+
+def limparCache():
+    os.system('cmd /c "ipconfig /flushdns"')
+    pressAnyButton = (input("Clinque enter para continuar"))
+    start()
+
+def start(): 
+    print("Qual comando quer usar?")
+    comando = int(input())
+    if comando == versionTool or comando == helpTool:
+      _tools(comando)
+      start()
+    else: 
+        if (comando == 1):
+            ip()
+        elif (comando == 2):
+            ipAvancado()
+        elif (comando == 3):
+            exibirCache()
+        elif (comando == 4):
+            limparCache()
+        else:
+            print("ERROR")
+            start()
+
+start()
